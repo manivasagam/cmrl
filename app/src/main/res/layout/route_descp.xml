@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:background="#cccccc"
+    android:fillViewport="true"
+    android:layout_height="fill_parent" >
+
+
+    <LinearLayout
+
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="fill_parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="From"
+            />
+        <TextView
+            android:id="@+id/from_station"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:paddingTop="5dp"
+            android:layout_marginLeft="30dp"
+            android:text="From descp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="To:"
+            />
+        <TextView
+            android:id="@+id/to_station"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:paddingTop="5dp"
+            android:layout_marginLeft="30dp"
+            android:text="to descp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:text="Train name:"
+            />
+        <TextView
+            android:id="@+id/train_selected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:paddingTop="5dp"
+            android:layout_marginLeft="30dp"
+            android:text="Train descp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="10dp"
+            android:text="Approx. distance:"
+            />
+        <TextView
+            android:id="@+id/distance_approx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:paddingTop="5dp"
+            android:layout_marginLeft="30dp"
+            android:text="Distance descp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Fare:"
+            />
+        <TextView
+            android:id="@+id/fare_for_path"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:paddingTop="5dp"
+            android:layout_marginLeft="30dp"
+            android:text="Fare descp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Approx. time:"
+            />
+        <TextView
+            android:id="@+id/approx_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:paddingTop="5dp"
+            android:layout_marginLeft="30dp"
+            android:text="Approx. time descp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Arrival time:"
+            />
+        <TextView
+            android:id="@+id/arrival_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#000"
+            android:textSize="15dp"
+            android:paddingTop="5dp"
+            android:layout_marginLeft="30dp"
+            android:text="time descp"
+            />
+
+    </LinearLayout>
+</ScrollView>
