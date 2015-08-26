@@ -16,6 +16,26 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".FindROUTE"
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".NearestSTATION"
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".StationINFO"
+            android:label="@string/app_name" >
+
+        </activity>
+        <activity
+            android:name=".TrainTIMIING"
+            android:label="@string/app_name" >
+
+        </activity>
     </application>
 
 </manifest>
