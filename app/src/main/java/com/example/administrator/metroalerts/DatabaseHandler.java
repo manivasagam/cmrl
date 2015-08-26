@@ -55,7 +55,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("INSERT INTO `train` VALUES (4,'train4',NULL);");
         db.execSQL("INSERT INTO `train` VALUES (5,'train5',NULL);");
 
-        db.execSQL("INSERT INTO `station` VALUES (1,'station1','31.1','31	',3123,NULL); ");
+        db.execSQL("INSERT INTO `station` VALUES (1,'station1','31.1','31',3123,NULL); ");
         db.execSQL("INSERT INTO `station` VALUES (2,'station2','32','32.5',3232423,NULL);");
         db.execSQL("INSERT INTO `station` VALUES (3,'station3','31.2','32',322131,NULL); ");
         db.execSQL("INSERT INTO `station` VALUES (4,'station4','33','33',34234234,NULL); ");
@@ -179,7 +179,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         String selectQuery = "select train.name,train.descp,train_route.fare,train_route.time_interval," +
                 "train_route.arrival_time,route.distance,station1.name,station2.name from route inner join" +
                 " train_route on route.rid = train_route.rid inner join train on train.tid = train_route.tid" +
-                " inner join station station1 on station1.sid = route.sid1inner join station station2 on station2.sid =" +
+                " inner join station station1 on station1.sid = route.sid1 inner join station station2 on station2.sid =" +
                 " route.sid2 where train_route.tid= (select train.tid from train where train.name='" +
                 TrainName +
                 "')order by train_route.arrival_time;";
@@ -228,5 +228,111 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         // return contact list
         return StationsList;
+    }
+
+    public List<TrainInfo> GetNearestTrainInfoList(String latitude, String longitude) {
+
+        List<TrainInfo> StationsList = new ArrayList<TrainInfo>();
+        // Select All Query
+        //Also add limit upto four elements
+        String selectQuery = "select name,contact_number from station";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+
+                // Adding contact to list
+                TrainInfo info = new TrainInfo();
+                info.name = cursor.getString(0);
+                info.descp = cursor.getString(1);
+                StationsList.add(info);
+            } while (cursor.moveToNext());
+        }
+        // return contact list
+        return StationsList;
+    }
+    public void UpgradeDB(String input){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRAIN);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_STATION);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ROUTE);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRAIN_ROUTE);
+
+        String CREATE_ROUTE_TABLE = "CREATE TABLE `route` (`sid1` INTEGER NOT NULL,`sid2` INTEGER NOT NULL,`distance` INTEGER,`rid` INTEGER PRIMARY KEY AUTOINCREMENT)";
+        String CREATE_STATION_TABLE = "CREATE TABLE station ( `sid` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `longitude` TEXT NOT NULL, `latitude` TEXT NOT NULL, `contact_number` INTEGER, `feeder_services` TEXT)";
+        String CREATE_TRAIN_TABLE = "CREATE TABLE `train` ( `tid`  INTEGER, `name` TEXT NOT NULL,`descp`  TEXT,PRIMARY KEY(tid))";
+        String CREATE_TRAIN_ROUTE_TABLE = "CREATE TABLE train_route ( `tid`  INTEGER,  `rid`  INTEGER,  `arrival_time`  TEXT, `time_interval` TEXT  , `fare`  INTEGER,  PRIMARY KEY(tid,rid,arrival_time))";
+
+
+
+        db.execSQL(CREATE_ROUTE_TABLE);
+        db.execSQL(CREATE_STATION_TABLE);
+        db.execSQL(CREATE_TRAIN_TABLE);
+        db.execSQL(CREATE_TRAIN_ROUTE_TABLE);
+
+
+        String[] tabels_ = input.split("<>",-1);
+        String[] table_route = tabels_[0].split(";",-1);
+        for(int i = 0 ; i <table_route.length;i++ ){
+            String[] row_ = table_route[i].split(":",-1);
+                db.execSQL("INSERT INTO `route` VALUES (" +
+                        row_[0] +
+                        "," +
+                        row_[1] +
+                        "," +
+                        row_[2] +
+                        "," +
+                        row_[3] +
+                        "); ");
+        }
+        String[] table_station = tabels_[1].split(";",-1);
+        for(int i = 0 ; i <table_station.length;i++ ){
+            String[] row_ = table_station[i].split(":",-1);
+            db.execSQL("INSERT INTO `station` VALUES (" +
+                    row_[0] +
+                    ",'" +
+                    row_[1] +
+                    "','" +
+                    row_[2] +
+                    "','" +
+                    row_[3] +
+                    "'," +
+                    row_[4] +
+                    ",'" +
+                    row_[5] +
+                    "'); ");
+        }
+        String[] table_train = tabels_[2].split(";",-1);
+        for(int i = 0 ; i <table_train.length;i++ ){
+            String[] row_ = table_train[i].split(":",-1);
+            db.execSQL("INSERT INTO `train` VALUES (" +
+                    row_[0] +
+                    ",'" +
+                    row_[1] +
+                    "','" +
+                    row_[2] +
+                    "'"+
+                    "); ");
+        }
+
+        String[] table_train_route = tabels_[1].split(";",-1);
+        for(int i = 0 ; i <table_train_route.length;i++ ){
+            String[] row_ = table_train_route[i].split(":",-1);
+            db.execSQL("INSERT INTO `train_route` VALUES (" +
+                    row_[0] +
+                    ",'" +
+                    row_[1] +
+                    "','" +
+                    row_[2] +
+                    "','" +
+                    row_[3] +
+                    "'," +
+                    row_[4] +
+                    "); ");
+        }
     }
 }
