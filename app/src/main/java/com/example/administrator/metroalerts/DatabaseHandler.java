@@ -5,6 +5,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -230,6 +232,30 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return StationsList;
     }
 
+    public List<TrainInfo> GetAllStations() {
+
+        List<TrainInfo> StationsList = new ArrayList<TrainInfo>();
+        // Select All Query
+        //Also add limit upto four elements
+        String selectQuery = "select name,contact_number from station;";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+
+                // Adding contact to list
+                TrainInfo info = new TrainInfo();
+                info.name = cursor.getString(0);
+                info.descp = cursor.getString(1);
+                StationsList.add(info);
+            } while (cursor.moveToNext());
+        }
+        // return contact list
+        return StationsList;
+    }
     public List<TrainInfo> GetNearestTrainInfoList(String latitude, String longitude) {
 
         List<TrainInfo> StationsList = new ArrayList<TrainInfo>();
@@ -343,5 +369,27 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     row_[4] +
                     "); ");
         }
+    }
+    public List<CustomMarker> getAlLStationsLoc() {
+        List<CustomMarker> StationsList = new ArrayList<CustomMarker>();
+        // Select All Query
+        String selectQuery = "select longitude,latitude,name from station;";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                CustomMarker c = new CustomMarker();
+                c.loc = new LatLng(Double.parseDouble(cursor.getString(1)),Double.parseDouble(cursor.getString(0)));
+                c.name = cursor.getString(2);
+                // Adding contact to list
+                StationsList.add(c);
+            } while (cursor.moveToNext());
+        }
+
+        // return contact list
+        return StationsList;
     }
 }

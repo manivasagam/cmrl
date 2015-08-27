@@ -27,9 +27,9 @@
                 android:layout_height="fill_parent">
                 <ImageButton
                     android:id="@+id/station_info"
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:layout_centerVertical="true"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+
                     android:layout_centerHorizontal="true"
                     android:background="@mipmap/info"
                     />
@@ -39,7 +39,7 @@
                     android:textColor="#000"
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/station_info"
                     android:text="Station Info"/>
@@ -53,10 +53,10 @@
                 android:layout_height="fill_parent">
                 <ImageButton
                     android:id="@+id/nearest_station"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:layout_height="120dp"
+
+                    android:layout_height="100dp"
                     android:background="@mipmap/gps"
                     />
                 <TextView
@@ -65,7 +65,7 @@
                     android:textColor="#000"
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/nearest_station"
                     android:text="Nearest station"/>
@@ -86,10 +86,10 @@
                 android:layout_height="fill_parent">
                 <ImageButton
                     android:id="@+id/find_route"
-                    android:layout_width="120dp"
-                    android:layout_centerVertical="true"
+                    android:layout_width="100dp"
+
                     android:layout_centerHorizontal="true"
-                    android:layout_height="120dp"
+                    android:layout_height="100dp"
                     android:background="@mipmap/search"
                     />
                 <TextView
@@ -98,7 +98,7 @@
                     android:textColor="#000"
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/find_route"
                     android:text="Find Route"/>
@@ -111,10 +111,10 @@
                 android:layout_height="fill_parent">
                 <ImageButton
                     android:id="@+id/train_timing"
-                    android:layout_width="120dp"
+                    android:layout_width="100dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:layout_height="120dp"
+
+                    android:layout_height="100dp"
                     android:background="@mipmap/time"
                     />
                 <TextView
@@ -123,7 +123,7 @@
                     android:textColor="#000"
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/train_timing"
                     android:text="Train time"/>
@@ -144,10 +144,10 @@
                 android:layout_height="fill_parent">
                 <ImageButton
                     android:id="@+id/update_db"
-                    android:layout_width="120dp"
-                    android:layout_centerVertical="true"
+                    android:layout_width="100dp"
+
                     android:layout_centerHorizontal="true"
-                    android:layout_height="120dp"
+                    android:layout_height="100dp"
                     android:background="@mipmap/update"
                     />
                 <TextView
@@ -156,7 +156,7 @@
                     android:textColor="#000"
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/update_db"
                     android:text="Update database"/>
@@ -168,11 +168,68 @@
                 android:layout_weight="1"
                 android:layout_height="fill_parent">
                 <ImageButton
-                    android:id="@+id/share_us"
-                    android:layout_width="120dp"
+                    android:id="@+id/metro_map"
+                    android:layout_width="100dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:layout_height="120dp"
+
+                    android:layout_height="100dp"
+                    android:background="@mipmap/map"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:textSize="17dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/metro_map"
+                    android:text="Metro Map"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_height="fill_parent">
+                <ImageButton
+                    android:id="@+id/about_us"
+                    android:layout_width="100dp"
+
+                    android:layout_centerHorizontal="true"
+                    android:layout_height="100dp"
+                    android:background="@mipmap/about"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:textStyle="bold"
+                    android:layout_marginTop="5dp"
+                    android:textSize="17dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_below="@+id/about_us"
+                    android:text="About us"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_height="fill_parent">
+                <ImageButton
+                    android:id="@+id/share_us"
+                    android:layout_width="100dp"
+                    android:layout_centerHorizontal="true"
+
+                    android:layout_height="100dp"
                     android:background="@mipmap/share"
                     />
                 <TextView
@@ -181,7 +238,7 @@
                     android:textColor="#000"
                     android:textStyle="bold"
                     android:layout_marginTop="5dp"
-                    android:textSize="20dp"
+                    android:textSize="17dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/share_us"
                     android:text="Share"/>

@@ -1,9 +1,11 @@
 package com.example.administrator.metroalerts;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,9 +35,20 @@ public class NearestSTATION extends Activity {
             list = db.GetNearestTrainInfoList(Double.toString(gps.getLatitude()), Double.toString(gps.getLongitude()));
             adapter=new NearestStationsAdapter(this,list);
             stationsLov.setAdapter(adapter);
+            stationsLov.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent i = new Intent(NearestSTATION.this, StationINFO.class);
+                    i.putExtra("station", list.get(position).name);
+                    startActivity(i);
+                }
+
+            });
         }else{
             gps.showSettingsAlert();
         }
+
 
     }
 }

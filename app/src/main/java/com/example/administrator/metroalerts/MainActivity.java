@@ -1,8 +1,10 @@
 package com.example.administrator.metroalerts;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
@@ -26,7 +28,7 @@ import org.apache.http.util.EntityUtils;
 import java.io.IOException;
 
 public class MainActivity extends Activity {
-    ImageButton StationInfo,NearestStation,FindRoute,TrainTiming, UpdateDb,SocialShare;
+    ImageButton StationInfo,NearestStation,FindRoute,TrainTiming, UpdateDb,SocialShare,AboutUs,Metroam;
     final DatabaseHandler db = new DatabaseHandler(this);
     SharedPreferences prefs;
 
@@ -42,6 +44,9 @@ public class MainActivity extends Activity {
         TrainTiming = (ImageButton) findViewById(R.id.train_timing);
         UpdateDb = (ImageButton) findViewById(R.id.update_db);
         SocialShare = (ImageButton) findViewById(R.id.share_us);
+
+        AboutUs = (ImageButton) findViewById(R.id.about_us);
+        Metroam = (ImageButton) findViewById(R.id.metro_map);
         String ver = prefs.getString("version", null);
         if( ver== null){
             SharedPreferences.Editor editor = getSharedPreferences("metro", MODE_PRIVATE).edit();
@@ -53,7 +58,7 @@ public class MainActivity extends Activity {
         StationInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i  = new Intent(MainActivity.this,StationINFO.class);
+                Intent i  = new Intent(MainActivity.this,SelectStation.class);
                 startActivity(i);
             }
         });
@@ -88,6 +93,29 @@ public class MainActivity extends Activity {
                 }else{
                     Toast.makeText(MainActivity.this,"No internet connection",Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+
+        Metroam.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i  = new Intent(MainActivity.this,MapMetro.class);
+                startActivity(i);
+            }
+        });
+        AboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setMessage("This is all about metro app")
+                        .setCancelable(false)
+                        .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                //do things
+                            }
+                        });
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
 
