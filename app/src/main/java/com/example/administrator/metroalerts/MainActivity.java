@@ -181,7 +181,7 @@ public class MainActivity extends Activity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return null;
+            return "";
         }
 
         @Override

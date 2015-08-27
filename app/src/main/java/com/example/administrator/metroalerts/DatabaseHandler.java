@@ -235,7 +235,16 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         List<TrainInfo> StationsList = new ArrayList<TrainInfo>();
         // Select All Query
         //Also add limit upto four elements
-        String selectQuery = "select name,contact_number from station";
+        String selectQuery = "select name,contact_number from station order by" +
+                "((" +
+                longitude +
+                " - station.longitude)*(" +
+                longitude +
+                " - station.longitude)+(" +
+                latitude +
+                " - station.latitude)*(" +
+                latitude +
+                " - station.latitude)) LIMIT 4;";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -319,7 +328,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                     "); ");
         }
 
-        String[] table_train_route = tabels_[1].split(";",-1);
+        String[] table_train_route = tabels_[3].split(";",-1);
         for(int i = 0 ; i <table_train_route.length;i++ ){
             String[] row_ = table_train_route[i].split(":",-1);
             db.execSQL("INSERT INTO `train_route` VALUES (" +
