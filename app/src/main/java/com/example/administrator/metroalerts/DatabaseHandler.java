@@ -392,4 +392,40 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         // return contact list
         return StationsList;
     }
+
+    public List<CustomMarker> getStationToStationLoc(String Station1,String Station2) {
+        List<CustomMarker> StationsList = new ArrayList<CustomMarker>();
+        // Select All Query
+        String selectQuery = "SELECT station1.name,station1.longitude,station1.latitude,station2.name, station2.longitude,station2.latitude " +
+                "FROM `train_route` inner join route on route.rid = train_route.rid inner join station station1 " +
+                "on station1.sid= route.sid1  inner join station station2 on station2.sid= route.sid2 WHERE " +
+                "train_route.`tid` = 1 and train_route.rid <= " +
+                "(SELECT rid FROM `route` WHERE sid1 = " +
+                "(select sid from station where name = '" +
+                Station1 +
+                "') " +
+                "and sid2 = (select sid from station where name = '" +
+                Station2 +
+                "') )";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                CustomMarker c = new CustomMarker();
+                c.loc = new LatLng(Double.parseDouble(cursor.getString(2)),Double.parseDouble(cursor.getString(1)));
+                c.loc1 = new LatLng(Double.parseDouble(cursor.getString(5)),Double.parseDouble(cursor.getString(4)));
+                c.name = cursor.getString(0);
+                c.name1 = cursor.getString(3);
+                // Adding contact to list
+                StationsList.add(c);
+            } while (cursor.moveToNext());
+        }
+
+        // return contact list
+        return StationsList;
+    }
+
 }

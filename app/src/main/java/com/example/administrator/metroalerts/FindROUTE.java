@@ -1,12 +1,16 @@
 package com.example.administrator.metroalerts;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +30,9 @@ public class FindROUTE extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.find_route);
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
         StationsLovTo = (Spinner) findViewById(R.id.stations_list_to);
         StationsLovFrom=(Spinner) findViewById(R.id.stations_list_from);
 
@@ -69,6 +76,17 @@ public class FindROUTE extends Activity {
 
             }
         });
+
         StationsLovTo.setSelection(1);
+        stationsLov.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent i = new Intent(FindROUTE.this,StationToStationRoute.class);
+                i.putExtra("from",StationsLovFrom.getSelectedItem().toString());
+                i.putExtra("to",StationsLovTo.getSelectedItem().toString());
+                startActivity(i);
+
+            }
+        });
     }
 }

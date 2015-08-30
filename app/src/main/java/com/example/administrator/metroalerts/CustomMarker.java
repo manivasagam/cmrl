@@ -7,5 +7,7 @@ import com.google.android.gms.maps.model.LatLng;
  */
 public class CustomMarker {
     LatLng loc;
+    LatLng loc1;
     String name;
+    String name1;
 }

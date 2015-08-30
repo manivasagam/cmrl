@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="140dp"
+        android:layout_centerHorizontal="true"
+        android:layout_height="140dp"
+        android:id="@+id/tmep1"
+        android:layout_marginTop="20dp"
+        android:background="@mipmap/about_us"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ff9900"
+        android:id="@+id/temp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tmep1"
+        android:text="About Us"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#ff9900"
+        android:padding="5dp"
+        android:layout_marginTop="5dp"
+        android:textSize="17dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/temp"
+        android:text="This app Metro by company is an effort to append convenience and flexibility to National/International tourists and proud Delhiites by providing essential information related to Delhi Metro System as well as of Delhi. It is an offline application, which once installed, provides all the information of Delhi Metro and much more. It has been designed with a very user centric approach, with some of the most prominent features."/>
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_ad_unit_id">
+    </com.google.android.gms.ads.AdView>
+</RelativeLayout>
