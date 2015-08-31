@@ -48,5 +48,7 @@ public class StationToStationRoute extends FragmentActivity implements OnMapRead
             map.moveCamera(CameraUpdateFactory.newLatLng(temp.get(i).loc1));
         }
         map.addPolyline(rectOptions);
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(temp.get(0).loc, 12.0f));
+
     }
 }
