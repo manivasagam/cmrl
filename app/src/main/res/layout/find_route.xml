@@ -54,10 +54,18 @@
             android:layout_height="wrap_content" />
 
     </LinearLayout>
-
+    <TextView
+        android:id="@+id/temp12"
+        android:layout_width="fill_parent"
+        android:textStyle="bold"
+        android:layout_margin="5dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/stations_list_layout"
+        android:text="Click to view on google map"
+        />
     <ListView
         android:id="@+id/trains_list"
-        android:layout_below="@+id/stations_list_layout"
+        android:layout_below="@+id/temp12"
         android:layout_height="wrap_content"
         android:layout_width="match_parent">
     </ListView>

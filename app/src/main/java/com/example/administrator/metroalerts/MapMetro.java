@@ -9,6 +9,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.List;
@@ -37,6 +38,8 @@ public class MapMetro extends FragmentActivity implements OnMapReadyCallback {
             map.addMarker(new MarkerOptions().position(temp.get(i).loc).title("Station in "+temp.get(i).name));
             map.moveCamera(CameraUpdateFactory.newLatLng(temp.get(i).loc));
         }
+
+        map.animateCamera(CameraUpdateFactory.newLatLngZoom(temp.get(0).loc, 12.0f));
 
     }
 }

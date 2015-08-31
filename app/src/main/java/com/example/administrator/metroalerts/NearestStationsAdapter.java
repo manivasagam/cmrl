@@ -30,7 +30,7 @@ public class NearestStationsAdapter extends ArrayAdapter<TrainInfo> {
 
         View rowView = inflater.inflate(R.layout.nearest_station_list_item, parent, false);
         TextView train_name = (TextView) rowView.findViewById(R.id.train_name);
-        TextView train_descp = (TextView) rowView.findViewById(R.id.train_descp);
+//        TextView train_descp = (TextView) rowView.findViewById(R.id.train_descp);
 //        TextView fare_ = (TextView) rowView.findViewById(R.id.fare_);
 //        TextView approx_time_interval = (TextView) rowView.findViewById(R.id.approx_time_interval);
 //        TextView arrival_time = (TextView) rowView.findViewById(R.id.arrival_time);
@@ -39,8 +39,8 @@ public class NearestStationsAdapter extends ArrayAdapter<TrainInfo> {
 
 
         train_name.setText(values.get(position).name);
-        train_descp.setText(values.get(position).descp);
-//        fare_.setText(values.get(position).fare);
+//        train_descp.setText(values.get(position).descp);
+//         fare_.setText(values.get(position).fare);
 //        approx_time_interval.setText(values.get(position).time_interval);
 //        arrival_time.setText(values.get(position).arrival_time);
 //        approx_distance.setText(values.get(position).distance);

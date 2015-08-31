@@ -109,7 +109,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/outputs" />
       <excludeFolder url="file://$MODULE_DIR$/build/tmp" />
     </content>
-    <orderEntry type="jdk" jdkName="Android API 22 Platform (1)" jdkType="Android SDK" />
+    <orderEntry type="jdk" jdkName="Android API 22 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" exported="" name="mediarouter-v7-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-cast-7.8.0" level="project" />
@@ -118,8 +118,8 @@
     <orderEntry type="library" exported="" name="play-services-wallet-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-drive-7.8.0" level="project" />
-    <orderEntry type="library" exported="" name="appcompat-v7-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-ads-7.8.0" level="project" />
+    <orderEntry type="library" exported="" name="appcompat-v7-22.2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-analytics-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-appindexing-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-appinvite-7.8.0" level="project" />
